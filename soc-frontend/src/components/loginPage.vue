@@ -1,11 +1,13 @@
 <template>
   <section class="bg-gray-500 dark:bg-gray-900">
     <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        
+      <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+        BitBlast
+      </a>
         <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
             <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                 <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                    Sign in to your account
+                    Sign in to Your account
                 </h1>
                 <div class="space-y-4 md:space-y-6" action="#">
                     <div>
@@ -19,7 +21,8 @@
                     <div class="flex items-center justify-between">                  
                         <a href="#" class="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Forgot password?</a>
                     </div>
-                    <button type="submit" @click="login" class="w-full text-white bg-gray-900 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Login</button>                   
+                    <div v-if="error" class="text-red-500 text-center mb-4">{{ error }}</div>
+                    <button type="submit" @click="login" class="w-full text-white bg-blue-900 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Login</button>                   
                   </div>
             </div>
         </div>
@@ -39,7 +42,7 @@ export default {
       email: null,
       username: null,
       password: null,
-      success: null,
+      error: null,
       userdata: [],
      
     }
@@ -52,7 +55,7 @@ export default {
   methods: {
     login() {
       const formData = {
-        username: this.username,
+        username_or_email: this.username,
         password: this.password
       }
       axios
@@ -80,8 +83,13 @@ export default {
 
         })
         .catch((error) => {
-          console.error(error.response.data.message)
-          // Handle login error
+          this.error = error.response.data.error;
+          this.password = null
+          this.username = null
+          setTimeout(() => {
+            this.error = null;
+          }, 1000);
+          
         })
     },
   

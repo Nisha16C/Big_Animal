@@ -46,22 +46,28 @@ class UserAuthViewSet(viewsets.ModelViewSet):
 
 class LoginViewSet(viewsets.ViewSet):
     def create(self, request):
-        # Perform user authentication
-        username = request.data.get('username')
+        # Get the login credentials (either username or email)
+        username_or_email = request.data.get('username_or_email')
         password = request.data.get('password')
-        user = authenticate(request, username=username, password=password)
-        # print(user)
-
-        if user is not None:
+        
+        # Check if the provided input is an email or username
+        if '@' in username_or_email:
+            # Provided input is an email
+            user = User.objects.filter(email=username_or_email).first()
+        else:
+            # Provided input is a username
+            user = User.objects.filter(username=username_or_email).first()
+ 
+        if user is not None and user.check_password(password):
             # Log the user in
             login(request, user)
-
+ 
             # Generate a new token for the user
             # token, created = Token.objects.get_or_create(user=user)
-
+ 
             # Return the user data and token in the response
             serializer = userAuthSerializers(user)
-
+ 
             return Response({
                 # 'token': token.key,
                 'user_data': serializer.data,

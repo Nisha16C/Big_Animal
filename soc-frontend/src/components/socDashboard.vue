@@ -2,134 +2,80 @@
    <leftSidebar />
 
    <div class="cluster bg-gray-100 p-4 sm:ml-64 flex">
-
-  
    <div class="cluster bg-gray-100 mt-20 w-auto  ">
       <div class="w-full h-15 border-b-2 border-solid text-center">
-         <h1 class="p-4 text-gray-900 text-2xl ">Create Cluster</h1>
+         <ul class="flex justify-center space-x-10 mx-10"> <!-- Adjust mx-10 for the desired left space -->
+            <li><router-link to="/socDashboard" >Cluster Info</router-link></li>
+            <li><router-link to="/cluster-setting" >Cluster Settings</router-link></li>
+            <li><a href="#" class="link-style">DB Configuration</a></li>
+            <li><a href="#" class="link-style">Additional Settings</a></li>
+         </ul>
       </div>
+     
       <h1 class="ml-[40px] mt-10 py-4 text-gray-900 text-xl font-semibold">Select the type of cluster you want to use</h1>
       <div class="ml-[40px]">
          <div class="col-span-2 mb-5">
             <div>
                <h1 class="py-4 text-gray-900 text-xl font-semibold">Cluster Type</h1>
             </div>
-
             <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-               <div class="h-72 w-72 bg-white border-t-8 border-t-slate-800 rounded-md text-center">
-                  <h1 class="pt-8 text-gray-900 font-semibold">Single Node cluster</h1>
-                  <p class="pt-8 px-5 text-gray-500">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cumque,
-                     obcaecati pariatur? Minostrum dolores quo ipsa debitis ullam corrupti ipsum.</p>
+            <label>
+               <div class="h-72 w-72 bg-white border-t-8 border-2 rounded-md text-center"
+               :style="{'border-color': single_node.includes('Single Node') ? 'pink' : 'white'}">
+                  <input v-model="single_node" class="hidden pt-8 text-gray-900 font-semibold" type="checkbox" value="Single Node"> Single Node               
+                  <p class="pt-8 px-5 text-gray-500">We recommend this on non production usecase only.</p>              
+               </div>
+            </label>
+
+            <label>
+               <div class="h-72 w-72 ml-12 bg-gray-50 border-t-8 border-2 rounded-md text-center"
+               :style="{'border-color': single_node.includes('Multi Node') ? 'pink' : 'white'}">
+                  <input  v-model="single_node" class="hidden pt-8 text-gray-900 font-semibold" type="checkbox" value="Multi Node">Primary/Standby High Availability
+                  <p class="pt-8 px-5 text-gray-500">This is beter suit for production usecase. </p>
+               </div>
+            </label>
+            </div>
+
+            <!-- Where to Deploy -->
+            <div class="mt-5">
+               <h1 class="py-4 text-gray-900 text-xl font-semibold">Where to Deploy</h1>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 ">
+               <div class="h-72 w-72 bg-white border-t-8 border-t-slate-800 rounded-md text-center">                 
+                  <div>
+                     <p class="object-contain h-72 w-72 max-w-full rounded-lg"> 
+                        BitBlast
+                     </p>
+                 </div>
                </div>
                <div class="h-72 w-72 ml-12 bg-white border-t-8 border-t-slate-800 rounded-md text-center">
-                  <h1 class="pt-8 text-gray-900 font-semibold">Primary/Standby High Availability</h1>
-                  <p class="pt-8 px-5 text-gray-500">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cumque,
-                     obcaecati pariatur? Minostrum dolores quo ipsa debitis ullam corrupti ipsum.</p>
+                  <div>
+                     <p class="object-contain h-72 w-72 max-w-full "> Other </p>
+                  </div>             
                </div>
             </div>
-            <div class="mb-5">
-               <h1 class="py-4 text-gray-900 text-xl font-semibold">Where to Deploy</h1>
-               <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                  <div class="h-48 w-48 bg-white border-t-8 border-t-slate-800 rounded-md text-center">
-                     <h1 class="pt-8 text-gray-900 font-semibold">Option 1</h1>
 
-                  </div>
-                  <div class="h-48 w-48 bg-white border-t-8 border-t-slate-800 rounded-md text-center">
-                     <h1 class="pt-8 text-gray-900 font-semibold">Option 2</h1>
-
-                  </div>
-               </div>
+            <!-- Providers Type -->
+            <div class="mt-5">
+               <h1 class="py-4 text-gray-900 text-xl font-semibold"> Providers </h1>
             </div>
-            <div class="mb-5">
-               <h1 class="py-4 text-gray-900 text-xl font-semibold">Select Region</h1>
-               <div class="grid grid-cols-6 md:grid-cols-3 gap-4">
-                  <div class="h-48 w-48 bg-white border-t-8 border-t-slate-800 rounded-md text-center">
-                     <h1 class="pt-8 text-gray-900 font-semibold">Option 1</h1>
-
-                  </div>
-                  <div class="h-48 w-48 bg-white border-t-8 border-t-slate-800 rounded-md text-center">
-                     <h1 class="pt-8 text-gray-900 font-semibold">Option 2</h1>
-                  </div>
-                  <div class="h-48 w-48 bg-white border-t-8 border-t-slate-800 rounded-md text-center">
-                     <h1 class="pt-8 text-gray-900 font-semibold">Option 2</h1>
-
-                  </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 ">
+               <div class="h-72 w-72 bg-white border-t-8 border-t-slate-800 rounded-md text-center">                 
+                  <div>
+                     <img class="object-contain h-72 w-72 max-w-full rounded-lg" src="@/assets/static/cloudstack.png" alt="">
+                 </div>
                </div>
+               <div class="h-72 w-72 ml-12 bg-white border-t-8 border-t-slate-800 rounded-md text-center">
+                  <div>
+                     <img class="object-contain h-72 w-72 max-w-full rounded-lg" src="@/assets/static/vmware.png" alt="">
+                 </div>               </div>
             </div>
+
          </div>
       </div>
    </div>
-
-   <div class=" cluster-sum  h-auto mt-20 p-5">
-      <h1 class="text-2xl mb-5">Cluster Summary</h1>
-       <table class="bg-pink-400 ">
-         <tr>
-           <th>Cluster Type</th>
-           <td>Single Node</td>
-         </tr>
-         <tr>
-           <th>Cluster Nodes</th>
-           <td>1 node</td>
-         </tr>
-         <tr>
-           <th>Deployment</th>
-           <td>BitBlast</td>
-         </tr>
-         <tr>
-           <th>Provider</th>
-           <td>VMware (BitBlast)</td>
-         </tr>
-         <!-- <tr>
-           <th>Region</th>
-           <td>US East 1</td>
-         </tr> -->
-         <tr>
-           <th>Cluster Name</th>
-           <td>Default</td>
-         </tr>
-         <tr>
-           <th>Postgres Type</th>
-           <td>PostgreSQL</td>
-         </tr>
-         <tr>
-           <th>Postgres Version</th>
-           <td>15</td>
-         </tr>
-         <tr>
-           <th>Instance Size</th>
-           <td>m5.large, 2vCPU, 8GB RAM</td>
-         </tr>
-         <tr>
-           <th>Volume Type</th>
-           <td>General Purpose SSD (gp3)</td>
-         </tr>
-         <tr>
-           <th>Volume Properties</th>
-           <td>4 Gi, 3000 IOPS, 125 MB/s Disk Throughput</td>
-         </tr>
-         <tr>
-           <th>Networking</th>
-           <td>Public</td>
-         </tr>
-         <tr>
-           <th>Backups Retention</th>
-           <td>30 Days</td>
-         </tr>
-         <tr>
-           <th>Maintenance Window</th>
-           <td>Not Enabled</td>
-         </tr>
-         <tr>
-           <th>PgBouncer</th>
-           <td>Not Enabled</td>
-         </tr>
-         <tr>
-           <th>pgvector</th>
-           <td>Not Enabled</td>
-         </tr>
-       </table>
-   </div>
-
+<!-- Cluster summary -->
+   <clusterSum/>
 </div>
    <fooTer />
 </template>
@@ -137,17 +83,25 @@
 <script>
 import leftSidebar from '@/components/leftSidebar.vue';
 import fooTer from '@/components/fooTer.vue';
+import clusterSum from '@/components/clusterSummary.vue';
 
 export default {
    components: {
       leftSidebar,
-      fooTer,
+      fooTer,clusterSum
+   },
+   data(){
+      return{
+         single_node: [
+            "1 node", "m2.small", "2vCPU", "4GB RAM"
+         ]
+      }
    }
 }
 </script>
 
 
-<style scoped> 
+<style > 
 table, th, td {
   border: none; 
   border-collapse: separate;
@@ -159,4 +113,12 @@ th, td {
 table {
   width: 100%;
 }
+.link-style {
+   text-decoration: none; /* Remove the default underline */
+   /* Set the dfault text color */
+   font-weight: 600; /* Set the default font weight to make it bold */
+   transition: color 0.2s, border-bottom-color 0.2s; /* Add a smooth transition effect */
+ }
+  
+ 
 </style> 

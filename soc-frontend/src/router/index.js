@@ -1,10 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import loginPage from '@/components/loginPage.vue'
-import rulePage from '@/components/rulePage.vue'
+
 import socDashboard from '@/components/socDashboard.vue'
 import onBoard from '@/components/onBoard.vue'
 import clusterSetting from '@/components/clusterSetting.vue'
+import clusterProvider from '@/components/providerPage.vue'
+import overviewPage from '@/components/overviewPage.vue'
 // import homeView from '@/views/HomeView.vue'
 import homeView from '@/views/HomeView.vue'
 
@@ -15,6 +17,16 @@ const routes = [
     name: 'login',
     path: '/',
     component: loginPage
+  },
+  {
+    name: 'provider',
+    path: '/providers',
+    component: clusterProvider
+  },
+  {
+    name: 'overview',
+    path: '/overview',
+    component: overviewPage
   },
   {
     name: 'socdashboard',
@@ -32,11 +44,6 @@ const routes = [
     component: homeView
   },
   {
-    name: 'rules',
-    path: '/rules',
-    component: rulePage
-  },
-  {
     name: 'onBoard',
     path: '/onBoard',
     component: onBoard
@@ -47,7 +54,7 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
-  linkExactActiveClass: 'text-yellow-500'
+  linkExactActiveClass: 'dark:text-pink-400'
 })
 
 
