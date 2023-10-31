@@ -1,7 +1,7 @@
 <template>
     <div class=" cluster-sum  h-auto mt-20 p-5">
         <h1 class="text-2xl mb-5">Cluster Summary</h1>
-         <table class="bg-pink-400 ">
+         <table class="bg-pink-200 ">
            <tr>
              <th>Cluster Type</th>
              <td> Single Node </td>

@@ -7,7 +7,7 @@
       <h1 class="pt-20 text-4xl font-bold">Hello User!</h1>
       <h2 class="pt-5 text-xl font-medium">Let's create a cluster</h2>
       <div class="pt-5">
-      <router-link to="/socDashboard" class="bg-slate-800 w-96  p-3 h-10 text-center text-gray-200 rounded-md">
+      <router-link to="/DbDashboard" class="bg-slate-800 w-96  p-3 h-10 text-center text-gray-200 rounded-md">
                               Create New Cluster
       </router-link>
       </div>

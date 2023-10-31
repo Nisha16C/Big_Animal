@@ -5,7 +5,7 @@
       Clusters
     </div>
     <div class="ml-auto">
-      <router-link to="/socDashboard" class="bg-slate-800 w-96 p-3 h-10 text-center text-gray-200 rounded-md">
+      <router-link to="/DbDashboard" class="bg-slate-800 w-96 p-3 h-10 text-center text-gray-200 rounded-md">
         Create New Cluster
       </router-link>
     </div>

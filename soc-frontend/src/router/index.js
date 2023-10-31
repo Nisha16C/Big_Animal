@@ -2,11 +2,11 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import loginPage from '@/components/loginPage.vue'
 
-import socDashboard from '@/components/socDashboard.vue'
-import onBoard from '@/components/onBoard.vue'
+import DbDashboard from '@/components/DBaaS.vue'
+
 import clusterSetting from '@/components/clusterSetting.vue'
 import clusterProvider from '@/components/providerPage.vue'
-import overviewPage from '@/components/overviewPage.vue'
+import overviewPage from '@/components/clusterViews.vue'
 // import homeView from '@/views/HomeView.vue'
 import homeView from '@/views/HomeView.vue'
 
@@ -25,13 +25,13 @@ const routes = [
   },
   {
     name: 'overview',
-    path: '/overview',
+    path: '/clusters-list',
     component: overviewPage
   },
   {
-    name: 'socdashboard',
-    path: '/socdashboard',
-    component: socDashboard
+    name: 'DbDashboard',
+    path: '/DbDashboard',
+    component: DbDashboard
   },
   {
     name: 'cluster-setting',
@@ -43,11 +43,7 @@ const routes = [
     path: '/home',
     component: homeView
   },
-  {
-    name: 'onBoard',
-    path: '/onBoard',
-    component: onBoard
-  },
+
 
 ]
 

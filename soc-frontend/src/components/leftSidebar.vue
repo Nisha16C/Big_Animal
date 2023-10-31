@@ -91,7 +91,7 @@
          </li>
          
          <li>            
-          <router-link to="/overview" :class="{ 'bg-slate-900 ': currentPage === 'socdashboard' }" class="flex items-center p-2  text-gray-900 rounded-lg dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700 group">
+          <router-link to="/clusters-list" :class="{ 'bg-slate-900 ': currentPage === 'socdashboard' }" class="flex items-center p-2  text-gray-900 rounded-lg dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700 group">
             <svg viewBox="64 64 896 896" focusable="false" data-icon="database" width="1em" height="1em"
             fill="currentColor" aria-hidden="true">
             <path
